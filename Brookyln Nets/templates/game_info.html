@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Game Information</h1>
+<table>
+    <tr>
+        <th>player ID</th>
+        <th>Games played</th>
+    </tr>
+    {% for game in games %}
+    <tr>
+        <td>{{ game.id }}</td>
+        <td>{{ game.name }}</td>
+        <td>{{ game.date }}</td>
+        <td>{{ game.score }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
