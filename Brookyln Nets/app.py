@@ -1,24 +1,22 @@
-from flask import Flask, render_template, request
-import sqlite3
-# Create an instance of the Flask class. This instance will be our WSGI application.
+from flask import Flask, render_template, request  # Import Flask and necessary modules
+import sqlite3  #Import SQLite3 for database connections
 app = Flask(__name__)
 
 
-# Function to establish a connection to the SQLite database
+# Initialize the Flask app
 def get_db_connection():
-    # Connect to the 'brooklyn_nets.db' SQLite database and return the connection object.
     conn = sqlite3.connect('brooklyn_nets.db')
     conn = sqlite3.connect('brooklyn_nets.db')
     return conn
 
 
-# Define a route for the homepage ('/') of the application.
+# Function to connect to the database
 @app.route('/')
 def index():
-    # Render and return the 'index.html' template when the homepage is accessed.
-    return render_template('index.html')
+    return render_template('index.html') 
 
 
+# Route for game info
 @app.route('/game_info')
 def game_info():
     conn = get_db_connection()
@@ -29,6 +27,7 @@ def game_info():
     return render_template('game_info.html', game_information=game_information)
 
 
+# Route for players info
 @app.route('/players')
 def players():
     conn = get_db_connection()
@@ -38,6 +37,7 @@ def players():
     return render_template('players.html', players=players)
 
 
+# Route for stats info
 @app.route('/stats')
 def stats():
     conn = get_db_connection()
@@ -46,7 +46,7 @@ def stats():
     conn.close()
     return render_template('stats.html', stats=stats)
 
-
+# Route for the search bar
 @app.route('/search', methods=['GET'])
 def search():
     query = request.args.get('q')
