@@ -28,8 +28,7 @@ def game_info():
 def players():
     conn = get_db_connection()
     cur = conn.cursor()
-    cur.execute('SELECT * FROM players')
-    players = cur.fetchall()
+    players = cur.execute('SELECT * FROM players').fetchall()
     conn.close()
     return render_template('players.html', players=players)
 
@@ -38,7 +37,7 @@ def players():
 def stats():
     conn = get_db_connection()
     cur = conn.cursor()
-    cur.execute('SELECT * FROM overall_stats').fetchall()
+    stats = cur.execute('SELECT * FROM overall_stats').fetchall()
     conn.close()
     return render_template('stats.html', stats=stats)
 
