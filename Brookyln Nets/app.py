@@ -1,16 +1,21 @@
 from flask import Flask, render_template, request
 import sqlite3
-
+# Create an instance of the Flask class. This instance will be our WSGI application.
 app = Flask(__name__)
 
 
+# Function to establish a connection to the SQLite database
 def get_db_connection():
+    # Connect to the 'brooklyn_nets.db' SQLite database and return the connection object.
+    conn = sqlite3.connect('brooklyn_nets.db')
     conn = sqlite3.connect('brooklyn_nets.db')
     return conn
 
 
+# Define a route for the homepage ('/') of the application.
 @app.route('/')
 def index():
+    # Render and return the 'index.html' template when the homepage is accessed.
     return render_template('index.html')
 
 
@@ -47,7 +52,6 @@ def search():
     query = request.args.get('q')
     conn = get_db_connection()
     cur = conn.cursor()
-   # game_info = conn.execute("SELECT * FROM game_info WHERE player_id LIKE ?", ('%' + query + '%',)).fetchall()
     players = cur.execute("SELECT * FROM players WHERE name LIKE ?", ('%' + query + '%',)).fetchall()
     print(players)
     conn.close()
