@@ -3,6 +3,9 @@ body {
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
+    background-image: url("images/background.jpg");
+    background-size: cover;
+    position: relative;
 }
 
 nav {
@@ -60,4 +63,19 @@ th, td {
 th {
     background-color: #333;
     color: #fff;
+}
+
+h1{
+    color: white;
+    text-align: center;
+    size: 100px;
+}
+
+p{
+    color: white;
+    text-align: center;
+}
+
+tr{
+    color: white;
 }

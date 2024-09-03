@@ -34,7 +34,6 @@ def players():
     cur = conn.cursor()
     players = cur.execute('SELECT * FROM players').fetchall()
     conn.close()
-    print(players)
     return render_template('players.html', players=players)
 
 
