@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request  # Import Flask and necessary modules
+from flask import Flask, render_template, request  # Import Flask and other materials
 import sqlite3  #Import SQLite3 for database connections
 app = Flask(__name__)
 
@@ -34,6 +34,7 @@ def players():
     cur = conn.cursor()
     players = cur.execute('SELECT * FROM players').fetchall()
     conn.close()
+    print(players)
     return render_template('players.html', players=players)
 
 
@@ -45,6 +46,7 @@ def stats():
     stats = cur.execute('SELECT * FROM overall_stats').fetchall()
     conn.close()
     return render_template('stats.html', stats=stats)
+
 
 # Route for the search bar
 @app.route('/search', methods=['GET'])
