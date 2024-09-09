@@ -3,12 +3,10 @@
 <h1>Game Information</h1>
 <table>
     <tr>
-        <th>player ID</th>
         <th>Games played</th>
     </tr>
     {% for game in games %}
     <tr>
-        <td>{{ game[0] }}</td>
         <td>{{ game[1] }}</td>
     </tr>
     {% endfor %}

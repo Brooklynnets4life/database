@@ -21,7 +21,7 @@ def index():
 def game_info():
     conn = get_db_connection()
     cur = conn.cursor()
-    cur.execute('SELECT * FROM game_information')
+    cur.execute('SELECT * FROM game_information').fetchall()
     game_information = cur.fetchall()
     conn.close()
     return render_template('game_info.html', game_information=game_information)
@@ -57,6 +57,11 @@ def search():
     print(players)
     conn.close()
     return render_template('search_results.html', query=query, players=players)
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
 
 
 if __name__ == '__main__':
