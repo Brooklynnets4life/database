@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Search Results for "{{ query }}"</h1>
+
+<h2>Games</h2>
+{% if games %}
+<table>
+    <tr>
+        <th>Game ID</th>
+        <th>Game Name</th>
+    </tr>
+    {% for game in games %}
+    <tr>
+        <td>{{ game.id }}</td>
+        <td>{{ game.name }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>No games found.</p>
+{% endif %}
+
+<h2>Players</h2>
+{% if players %}
+<table>
+    <tr>
+        <th>Name</th>
+    </tr>
+    {% for player in players %}
+    <tr>
+        <td>{{ player[1] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>No players found.</p>
+{% endif %}
+{% endblock %}

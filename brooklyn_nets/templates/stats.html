@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Stats</h1>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Points</th>
+        <th>Assists</th>
+        <th>Rebounds</th>
+    </tr>
+    {% for stat in stats %}
+    <tr>
+        <td>{{ stat[0] }}</td>
+        <td>{{ stat[1] }}</td>
+        <td>{{ stat[2] }}</td>
+        <td>{{ stat[3] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
